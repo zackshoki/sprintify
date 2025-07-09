@@ -1,7 +1,8 @@
 <?php
     include('include/init.php');
     $token = tokenSetup(); 
-    $playlistId = getUserPlaylist(1); // userId is hardcoded
+    $userId = $_SESSION['userId'];
+    $playlistId = getUserPlaylist($userId); 
 
     if (!empty($_POST['run_distance']) && !empty($_POST['pace'])) {
         $distance = $_POST['run_distance'];
@@ -33,7 +34,7 @@
         <div id="playlistImage"></div>
         <div id="songNames"></div> 
         <script>
-            const profile = <?php echo getSpotifyProfile(1); // userId is hardcoded ?>;
+            const profile = <?php echo getSpotifyProfile($userId); ?>;
             const playlist = <?php echo $playlist_json; ?>; 
             const songs = <?php echo json_encode($songs, true) ?>;
             showPlaylist(playlist);

@@ -1,7 +1,9 @@
 <?php
     include('include/init.php');
     tokenSetup();
+    $userId = $_SESSION['userId'];
     // saveTracksToDB(); // this was commented out to make reloads faster. still havent found a good way to save all your songs to the db at once. 
+
 ?>
 
 <html>
@@ -34,7 +36,7 @@
     </form>
 
     <script defer>
-        const profile = <?php echo getSpotifyProfile(1); /* userID is hardcoded for now */ ?>;
+        const profile = <?php echo getSpotifyProfile($userId); ?>;
         populateUI(profile);
    </script>
 </body>
