@@ -1,7 +1,7 @@
 <?php
     include('include/init.php');
     $token = tokenSetup(); 
-    $userId = $_SESSION['userId'];
+    $userId = $_SESSION['userId'] ?? createUser(tokenSetup());
     $playlistId = getUserPlaylist($userId); 
 
     if (!empty($_POST['run_distance']) && !empty($_POST['pace'])) {
@@ -10,7 +10,10 @@
     } else {
         header('Location: index.php'); // redirect if the distance and pace are not set
     }
-
+    if (!empty($_POST['height'])) {
+        $stride_length = ((float) $_POST['height']) * 0.413 * 0.0254 *2; 
+        setStrideLength($userId, $stride_length);
+    }
     $minutes = distanceToMinutes($_POST['run_distance'], $_POST['pace']);
     $tempo = paceToTempo($_POST['pace']);
 

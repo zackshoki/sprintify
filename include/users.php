@@ -70,12 +70,22 @@
         $profile_json = getUser($userId)['profile'];
         return $profile_json;
     }   
+    function setStrideLength($userId, $stride_length) {
+        dbQuery("
+            UPDATE users
+            SET stride_length = :stride
+            WHERE userId = :userId
+        ", [
+            ":userId" => $userId,
+            ":stride" => $stride_length
+        ]);
+    }
     function getStrideLength($userId) { // in meters, further gain accuracy by separating into walking stride length, jog stride length, run stride length, sprint stride length etc. 
         $stride_length = dbQuery("
             SELECT stride_length
             FROM users
             WHERE userId = $userId 
-        ")->fetch()['stride_length'];
+        ")->fetch()['stride_length'] ?? 1.5;
         return $stride_length;
     }
     function getUserPlaylist($userId) {

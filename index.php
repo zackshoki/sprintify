@@ -1,7 +1,7 @@
 <?php
     include('include/init.php');
     tokenSetup();
-    $userId = $_SESSION['userId'];
+    $userId = $_SESSION['userId'] ?? createUser(tokenSetup());
     // saveTracksToDB(); // this was commented out to make reloads faster. still havent found a good way to save all your songs to the db at once. 
 
 ?>

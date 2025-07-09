@@ -5,7 +5,7 @@
         echo "<pre>".$clean."</pre>";
     }
     function paceToTempo($pace) { // running cadence calculations... potentiallly have an option for runners to either enter their height, enter their steps per minute, or link their strava for more accurate calculations
-        $userId = $_SESSION['userId'];
+        $userId = $_SESSION['userId'] ?? createUser(tokenSetup());
         $strideLength = getStrideLength($userId); // stride length is in meters
         $tempo = 1609.34/(floatval($pace)*floatval($strideLength)); // accuracy could definitely be improved
         return $tempo;
