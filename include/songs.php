@@ -33,11 +33,14 @@ function mergeSongDataFromRecco($trackMetaData, $trackTempoData)
     return $mergedTrackData;
 }
 
-function storeTrackData($fullTrackData)
+function storeTrackData($fullTrackData, $userId)
 { // takes in array of full track data that is indexed by reccoId, like that returned by mergeSongDataFromRecco();
     global $pdo;
 
     $rows = [];
+    $songToUserIds = [];
+    $userId = $pdo->quote($userId);
+
     foreach ($fullTrackData as $track) {
         $name = $pdo->quote($track['name']);
         $artist = $pdo->quote($track['artist']);
@@ -47,15 +50,20 @@ function storeTrackData($fullTrackData)
         $length = $track['length']; // in seconds
 
         $rows[] = "($name, $artist, $tempo, $spotifyId, $reccoId, $length)";
+        $songToUserIds[] = "($spotifyId, $userId)";
     }
     if (!empty($rows)) {
         dbQuery("
-    INSERT IGNORE INTO songs (name, artist, tempo, spotifyId, reccoId, length) VALUES " . implode(", ", $rows) . "
-    ");
+            INSERT IGNORE INTO songs (name, artist, tempo, spotifyId, reccoId, length) VALUES " . implode(", ", $rows) . "
+        ");
+
+        dbQuery("
+            INSERT IGNORE INTO songsToUsers (songId, userId) VALUES ". implode(", ", $songToUserIds) ."
+        ");
     }
 }
 
-function getSongList($min, $max) { // gets all songs with a bpm between the values given and returns their spotifyids in an array format, store the length values of each song in the array as well
+function getSongList($min, $max, $userId) { // gets all songs with a bpm between the values given and returns their spotifyids in an array format, store the length values of each song in the array as well
     // this function should probably take both half-times (divide by 2) and double-times (multiply by 2) of the given min and max to account for clear issues of tempo calculations
     if ($min < 0) {
         $min = 0; 
@@ -68,19 +76,24 @@ function getSongList($min, $max) { // gets all songs with a bpm between the valu
     $songList = dbQuery("
         SELECT spotifyId, length
         FROM songs 
-        WHERE (tempo > $min AND tempo < $max)
-        OR
-        (tempo > $min2 AND tempo < $max2)
-        OR 
-        (tempo > $minHalf AND tempo < $maxHalf)
-    ")->fetchAll() ?? NULL; // potentially take tempo and name and display these in some way?
+        LEFT JOIN songsToUsers ON songsToUsers.songId = songs.spotifyId
+        WHERE
+            ((tempo > $min AND tempo < $max)
+            OR
+            (tempo > $min2 AND tempo < $max2)
+            OR 
+            (tempo > $minHalf AND tempo < $maxHalf))
+            AND userId = :userId
+    ", [
+        ':userId' => $userId
+    ])->fetchAll() ?? NULL; // potentially take tempo and name and display these in some way?
     
     $songList = array_filter($songList);
     return $songList;
 }
 
-function constructPlaylist($min, $max, $lengthOfRunInMinutes) { // GREEDYYYYYOOH algorithm that will randomly shuffle the array given from getSongList and loop through picking a song and adding it to the new songlist until the new song list's length exceeds the length of the run, then returns the new song list
-    $songList = getSongList($min, $max);
+function constructPlaylist($min, $max, $lengthOfRunInMinutes, $userId) { // GREEDYYYYYOOH algorithm that will randomly shuffle the array given from getSongList and loop through picking a song and adding it to the new songlist until the new song list's length exceeds the length of the run, then returns the new song list
+    $songList = getSongList($min, $max, $userId);
     $lengthOfRun = $lengthOfRunInMinutes * 60; // minutes to seconds
     shuffle($songList);
     $spotifyIds = [];
@@ -95,7 +108,7 @@ function constructPlaylist($min, $max, $lengthOfRunInMinutes) { // GREEDYYYYYOOH
         $i++;
         if ($i >= count($songList)) { // if there's not enough songs at a certain tempo range, expand to diff tempos
             $min = $min - 10;  
-            $songList = array_merge(getSongList($min, $min+10), getSongList($max, $max+10));
+            $songList = array_merge(getSongList($min, $min+10, $userId), getSongList($max, $max+10, $userId));
             $max = $max + 10; 
             $i = 0; 
         } else if ($min < 0 && $max > 300) { // error handling

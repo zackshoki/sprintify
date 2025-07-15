@@ -2,8 +2,10 @@
     include('include/init.php');
     tokenSetup();
     $userId = $_SESSION['userId'] ?? createUser(tokenSetup());
-    // saveTracksToDB(); // this was commented out to make reloads faster. still havent found a good way to save all your songs to the db at once. 
-    // need to set up many to many relationship
+    saveTracksToDB($userId); // this was commented out to make reloads faster. still havent found a good way to save all your songs to the db at once. 
+    // maybe we should scan all the songs in the database for songs that match the songs that a new user is trying to upload and cancel those uploads while just uploading to the songs to users table
+    // also we might store a pointer to what point in the amount of songs that a we are into uploading a specific user's songs and push that counter forward each time we upload data about a new batch or access that the song is available. 
+
 
 ?>
 
@@ -32,7 +34,6 @@
         <strong>distance:</strong> <input type="text" id="runDistance" name="run_distance" value="3"/> miles <br>
         <strong>desired pace:</strong> <input type="text" id="pace" name="pace" value="10"/> min/mi <br> 
         <strong>height (inches):</strong> <input type="text" id="height" name="height" value="73"/> inches <br> 
-        <!-- height is not currently used in calculations and stride length is assumed, but later should be modified for stride length to be calculated -->
         <input type="submit" /> 
     </form>
 

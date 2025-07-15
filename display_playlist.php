@@ -17,7 +17,7 @@
     $minutes = distanceToMinutes($_POST['run_distance'], $_POST['pace']);
     $tempo = paceToTempo($_POST['pace']);
 
-    $songs = constructPlaylist($tempo - 10, $tempo + 10, $minutes);
+    $songs = constructPlaylist($tempo - 10, $tempo + 10, $minutes, $userId);
  
     generatePlaylist($playlistId, $songs, "zack's run", $distance, $pace);
     $playlist_json = json_encode(getPlaylist($playlistId)); 

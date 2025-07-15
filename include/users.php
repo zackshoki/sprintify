@@ -25,7 +25,7 @@
                 ':profile' => json_encode($profile),
                 ':name' => $name,
                 ':total_songs' => $total
-            ])->fetch();
+            ]);
             $userId = $pdo->lastInsertId();
             return $userId;
         } else {
