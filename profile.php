@@ -19,24 +19,12 @@
 </head>
 
 <body>
-    <div class="header">
-        <div class="title"> 
-            <h1>Sprintify</h1>
+    <div class="homeContainer">
+        <div class="title" id = "displayName">
         </div>
         <div id="avatar"></div>
-        <div id="displayName"></div>
         <div id="email"></div>
         <div id="url"></div>
-    </div>
-    <div class="homeContainer"> 
-        <div>new run</div>
-        <form id="userData" action="display_playlist.php" method="POST">
-            <strong>distance:</strong> <input type="text" id="runDistance" name="run_distance" value="3"/> miles <br>
-            <strong>desired pace:</strong> <input type="text" id="pace" name="pace" value="10"/> min/mi <br> 
-            <input type="submit" value="go!"/> 
-        </form> 
-    </div>
-    <div class="footer">
 
     </div>
     <script defer>

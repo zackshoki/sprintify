@@ -32,9 +32,12 @@
         
     </head>
 
-    <body> 
-        <div id="playlistName"></div>
-        <div id="playlistImage"></div>
+    <body>
+        <div class="playlistContainer">
+            <div id="playlistImage"></div>
+            <div id="playlistName"></div>
+            <div id="playlistDescription"></div>
+        </div>
         <div id="songNames"></div> 
         <script>
             const profile = <?php echo getSpotifyProfile($userId); ?>;

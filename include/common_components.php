@@ -17,3 +17,10 @@ function tokenSetup() {
     }
     return $token;
 }
+
+function echoHeader() {
+
+}
+function echoFooter() {
+    
+}
