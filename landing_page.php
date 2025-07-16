@@ -20,7 +20,7 @@
                 <!-- these are currently not sent anywhere      -->
             <input type="submit" style="display:none" /> 
             </form>
-            <button onclick="signup()" class="signUpButton">sign up with spotify</button>
+            <button onclick="signup()" class="signUpButton"><p>sign up with spotify</p></button>
             <div class="signupToLogin">have an account? <a href="user_login.php">login</a></div>
         </div>
     </body>

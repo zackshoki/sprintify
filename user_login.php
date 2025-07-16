@@ -14,8 +14,8 @@
     <body>
         <div class="signUpContainer">
             <div class="title">Sprintify</div>
-            <button onclick="login()" class="signUpButton">log in with spotify</button>
-            <div class="signupToLogin">first time? <a href="landing_page.php">sign up</a></div>
+            <button onclick="login()" class="signUpButton"><p>log in with spotify</p></button>
+            <div class="signupToLogin"><p>first time? <a href="landing_page.php">sign up</a></p></div>
         </div>
     </body>
 </html>

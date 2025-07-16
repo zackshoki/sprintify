@@ -26,7 +26,7 @@
         <div id="avatar"></div>
         <div id="displayName"></div>
         <div id="email"></div>
-        <div id="url"></div>
+        <div id="url" style="display:none"></div>
     </div>
     <div class="homeContainer"> 
         <div>new run</div>

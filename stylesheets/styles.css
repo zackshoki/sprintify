@@ -1,0 +1,36 @@
+p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+    /* identical to box height, or 129% */
+    text-align: center;
+    color: #0d0d0d;
+}
+.title {
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+    /* identical to box height, or 129% */
+    text-align: center;
+    color: #000000;
+}
+
+.signUpButton {
+    box-sizing: border-box;
+    border: 1px solid #000000;
+}
+
+.signUpContainer {
+  min-height: calc(100%);
+  display: flex;  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
