@@ -1,4 +1,8 @@
-p {
+body {
+    padding-bottom: 50px;
+}
+
+p, .text {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -7,6 +11,7 @@ p {
     /* identical to box height, or 129% */
     text-align: center;
     color: #0d0d0d;
+    margin: 0px;
 }
 .title {
     background: #FFFFFF;
@@ -19,6 +24,7 @@ p {
     /* identical to box height, or 129% */
     text-align: center;
     color: #000000;
+    padding: 3px 5px;
 }
 
 .signUpButton {
@@ -33,4 +39,27 @@ p {
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.heightWeightContainer {
+    background-color: #cccccc;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+}
+
+.heightWeight {
+    background-color: #eeeeee;
+    padding: 3px;
+    
+}
+.heightWeight > p {
+    text-align: left;
+}
+
+.formContainer {
+    text-align: left;
+    border-style: hidden;
+    background-color: #eeeeee;
 }

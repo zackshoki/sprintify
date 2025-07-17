@@ -5,22 +5,19 @@
         <link rel="stylesheet" href="stylesheets/styles.css">
         <script type="text/javascript" src="scripts/main.js"></script>
         <script defer>
-            function signup() {
-                // submit the form first
-                window.location.href = 'login.php';
-            }
+            
         </script>
     </head>
     <body>
         <div class="signUpContainer">
             <div class="title">Sprintify</div>
-            <form id="userData" class="heightAndWeight" action="login.php" method="POST">
-                <strong>height:</strong> <input type="text" id="height" name="height" value="73"/> inches <br> 
-                <strong>weight:</strong> <input type="text" id="runDistance" name="run_distance" value="225"/> lbs <br>    
+            <form id="heightWeight" action="login.php" method="POST" class="heightWeightContainer">
+                <div class="heightWeight"><p>height: <input type="text" id="height" name="height" value="73" class="text formContainer"/> inches</p></div>
+                <div class="heightWeight"><p>weight: <input type="text" id="runDistance" name="run_distance" value="225" class="text formContainer"/> lbs </p></div>    
                 <!-- these are currently not sent anywhere      -->
-            <input type="submit" style="display:none" /> 
+                
             </form>
-            <button onclick="signup()" class="signUpButton"><p>sign up with spotify</p></button>
+                <input form="heightWeight" type="submit" class="signUpButton text" value="sign up with spotify" /> 
             <div class="signupToLogin">have an account? <a href="user_login.php">login</a></div>
         </div>
     </body>
