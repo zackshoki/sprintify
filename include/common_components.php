@@ -21,6 +21,43 @@ function tokenSetup() {
 function echoHeader() {
 
 }
-function echoFooter() {
-    
+function echoFooter($state) {
+    if ($state == "home") {
+        // put different things to echo here
+    } else if ($state = "friends") {
+
+    } else if ($state = "start") {
+
+    } else if ($state == "past") {
+        
+    } else if ($state == "settings") {
+
+    }
+    echo '<div class="footer">
+        <button class="footerButton" onclick="location.href=`index.php`">
+            <div class="icons">
+                <img src="assets/music_note_checked.svg" style="width: 100%; height: 100%"/>
+            </div>
+            <div style="text-align:center;">home</div></button>
+        <button class="footerButton">
+            <div class="icons">
+                <img src="assets/gmail_groups.svg" style="width: 100%; height: 100%"/>
+            </div>
+            <div style="text-align:center;">friends</div></button>
+        <button class="footerButton">
+            <div class="icons">
+                <img src="assets/start.svg" style="width: 100%; height: 100%" />
+            </div>
+            <div style="text-align:center;">start</div></button>
+        <button class="footerButton">
+            <div class="icons">
+                <img src="assets/fast_rewind.svg" style="width: 100%; height: 100%" />
+            </div>
+            <div style="text-align:center;">past</div></button>
+        <button class="footerButton" onclick="location.href=`settings.php`">
+            <div class="icons">
+                <img src="assets/settings.svg" style="width: 100%; height: 100%" />
+            </div>
+            <div style="text-align:center;">settings</div></button>
+    </div>';
 }

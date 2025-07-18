@@ -1,31 +1,28 @@
 body {
     padding-bottom: 50px;
 }
+p {
+    margin-block: 0px; 
+    margin-inline: 0px;
+}
 
-p, .text {
+p, .text, .runFormContainer input {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 17px;
+    font-size: 18px;
     line-height: 22px;
     /* identical to box height, or 129% */
-    text-align: center;
+    text-align: left;
     color: #0d0d0d;
     margin: 0px;
 }
-.title {
-    background: #FFFFFF;
-    border: 1px solid #000000;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 22px;
-    /* identical to box height, or 129% */
-    text-align: center;
-    color: #000000;
-    padding: 3px 5px;
+
+h1 {
+    margin-block: 0px; 
+    margin-inline: 0px;
 }
+
 
 .signUpButton {
     box-sizing: border-box;
@@ -63,3 +60,60 @@ p, .text {
     border-style: hidden;
     background-color: #eeeeee;
 }
+
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 17px 12px;
+    gap: 17px;
+}
+
+.sectionTitle {
+    width: 198px;
+    height: 71px;
+    display: flex;
+    background-color: #dddddd;
+}
+
+.sectionTitle > p, .runFormContainer button[type="submit"] > p {
+    margin-left: 5px;
+    margin-bottom: 2px;
+    align-self: flex-end;
+}
+
+.runFormContainer {
+    background-color: #cccccc;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+}
+
+.runFormContainer > div {
+    background-color: #eeeeee;
+    padding: 3px;
+    display: flex;
+}
+.runFormContainer > div p {
+    margin-left: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+.runFormContainer input[type="text"] {
+    max-width: 20%; 
+    background-color: #eeeeee;
+    height: auto;
+    border-style: none;
+    border-bottom-style: solid;
+}
+.runFormContainer button[type="submit"], .personalInfo {
+    width: 148px;
+    height: 97px;
+    display: flex;
+    background-color: #5b5b5b;
+    border-style: none;
+}
+.runFormContainer button[type="submit"] > p, .personalInfo > p {
+    margin-left: 0px;
+    color: #ffffff;
+} 

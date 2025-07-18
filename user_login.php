@@ -3,6 +3,7 @@
         <meta charset="utf-8" name="viewport" content="width=device-width">
         <title>Sprintify</title>
         <link rel="stylesheet" href="stylesheets/styles.css">
+        <link rel="stylesheet" href="stylesheets/header.css">   
         <script type="text/javascript" src="scripts/main.js"></script>
         <script defer>
             function login() {
@@ -13,7 +14,7 @@
     </head>
     <body>
         <div class="signUpContainer">
-            <div class="title">Sprintify</div>
+            <div class="title"><h1>Sprintify</h1></div>
             <button onclick="login()" class="signUpButton"><p>log in with spotify</p></button>
             <div class="signupToLogin"><p>first time? <a href="landing_page.php">sign up</a></p></div>
         </div>

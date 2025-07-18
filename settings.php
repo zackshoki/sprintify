@@ -21,20 +21,13 @@
     <script type="text/javascript" src="scripts/main.js"></script>
 </head>
 
-<body>
-    <div class="homeContainer">
-        <div class="title" id = "displayName">
+    <body>
+        <div class="title">
+            <h1>settings</h1>
         </div>
-        <div id="avatar"></div>
-        <div id="email"></div>
-        <div id="url"></div>
-
-    </div>
-    <script defer>
-        const profile = <?php echo getSpotifyProfile($userId); ?>;
-        populateUI(profile);
-   </script>
-   <?php echoFooter("home"); ?>
-</body>
-
+        <div>
+            log out?
+        </div>
+        <?php echoFooter("home"); ?>
+    </body>
 </html>

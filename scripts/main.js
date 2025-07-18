@@ -1,14 +1,14 @@
 // spotify functions
 function populateUI(profile) {
-    document.getElementById("displayName").innerText = profile.display_name;
+    if (document.getElementById("displayName") != null) {document.getElementById("displayName").innerText = profile.display_name;}
     if (profile.images[0]) {
         const profileImage = new Image(200, 200);
         profileImage.src = profile.images[0].url;
         document.getElementById("avatar").appendChild(profileImage);
     }
-    document.getElementById("email").innerText = profile.email;
-    document.getElementById("url").innerText = profile.href;
-    document.getElementById("url").setAttribute("href", profile.href);
+    if (document.getElementById("email") != null) {document.getElementById("email").innerText = profile.email;}
+    if (document.getElementById("url") != null) {document.getElementById("url").innerText = profile.href;}
+    if (document.getElementById("url") != null) {document.getElementById("url").setAttribute("href", profile.href)};
 }
 
 function showPlaylist(playlist) {

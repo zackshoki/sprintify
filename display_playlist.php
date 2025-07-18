@@ -29,6 +29,7 @@
         <title>Playlist</title>
         <link rel="stylesheet" href="stylesheets/styles.css">
         <script type="text/javascript" src="scripts/main.js"></script>
+        <link rel="stylesheet" href="stylesheets/footer.css">
         
     </head>
 
@@ -39,6 +40,7 @@
             <div id="playlistDescription"></div>
         </div>
         <div id="songNames"></div> 
+        <?php echoFooter("start"); ?> 
         <script>
             const profile = <?php echo getSpotifyProfile($userId); ?>;
             const playlist = <?php echo $playlist_json; ?>; 
