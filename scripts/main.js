@@ -18,12 +18,13 @@ function showPlaylist(playlist) {
         playlistImage.src = playlist.images[0].url;
         document.getElementById("playlistImage").appendChild(playlistImage);
     }
-    let songNames = []; 
-    playlist.tracks.items.forEach((item) => {
-        songNames.push(item.track.name + " - " + item.track.artists[0].name); 
-    });
+    // let songNames = []; 
+    // playlist.tracks.items.forEach((item) => {
+    //     songNames.push(item.track.name + " - " + item.track.artists[0].name); 
+    // });
 
-    document.getElementById("songNames").innerText = JSON.stringify(songNames);
+    // document.getElementById("songNames").innerText = JSON.stringify(songNames);
+    document.getElementById("playlistDescription").innerHTML = playlist.description;
     document.title = playlist.name;
 }
 

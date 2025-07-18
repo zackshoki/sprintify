@@ -22,12 +22,14 @@
 </head>
 
     <body>
-        <div class="title">
-            <h1>settings</h1>
-        </div>
+        <?php echoHeader("settings"); ?>
         <div>
             log out?
         </div>
         <?php echoFooter("home"); ?>
+        <script defer>
+        const profile = <?php echo getSpotifyProfile($userId); ?>;
+        populateUI(profile);
+        </script>
     </body>
 </html>

@@ -21,15 +21,7 @@
 </head>
 
 <body>
-    <div class="header">
-        <div class="title"> 
-            <h1>Sprintify</h1>
-        </div>
-        <div id="avatar" class="avatar" ></div>
-        <!-- <div id="displayName"></div>
-        <div id="email"></div>
-        <div id="url" style="display:none"></div> -->
-    </div>
+    <?php echoHeader("Sprintify"); ?>
     <div class="homeContainer"> 
         <div class="sectionTitle"><p>new run</p></div>
         <form id="userData" action="display_playlist.php" method="POST" class="runFormContainer">

@@ -18,8 +18,16 @@ function tokenSetup() {
     return $token;
 }
 
-function echoHeader() {
-
+function echoHeader($title) {
+    echo '<div class="header">
+        <div class="title"> 
+            <h1>'.$title.'</h1>
+        </div>
+        <a href="profile.php"><div id="avatar" class="avatar"></div></a>
+        <!-- <div id="displayName"></div>
+        <div id="email"></div>
+        <div id="url" style="display:none"></div> -->
+    </div>';
 }
 function echoFooter($state) {
     if ($state == "home") {

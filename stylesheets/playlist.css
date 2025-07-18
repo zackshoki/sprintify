@@ -1,0 +1,73 @@
+h2 {
+    margin-block: 0px;
+    margin-inline: 0px;
+}
+.playlistContainer {
+    display: grid;
+    grid-template-areas: 
+        "playlistCover title"
+        "playlistCover description";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 17px 12px;
+    gap: 17px;
+}
+.playlistImage {
+    grid-area: playlistCover;
+}
+.playlistName {
+    grid-area: title;
+    background-color: #cccccc;
+    display: flex;
+}
+.playlistDescription {
+    grid-area: description;
+    background-color: #cccccc;
+}
+.playlistName > p {
+    align-self: flex-end;
+    margin-left: 4px;
+    margin-top: 4px;
+}
+.playlistDescription > p {
+    margin-left: 4px;
+    margin-top: 4px;
+}
+.songsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 17px 12px;
+    background-color: #cccccc;
+    margin-bottom: 50px;
+}
+.songBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+}
+.songNameAndArtist {
+    flex-grow: 3;
+    margin: 8px 8px;
+    padding: 0px 3px;
+    background-color: #eeeeee;
+    display: flex;
+    flex-direction: column;
+    overflow-wrap: break-word;
+    overflow: auto;
+}
+
+.songNameAndArtist > h2, .songNameAndArtist > p {
+
+}
+.songImage {
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
+.songImage > img {
+    max-width: 90%;
+    height: auto;
+    margin: 4px;
+}

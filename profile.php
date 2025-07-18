@@ -22,13 +22,18 @@
 </head>
 
 <body>
-    <div class="homeContainer">
-        <div class="title" id = "displayName">
+    <div class="header" style="justify-content: flex-start; gap: 15px">
+        <a href="profile.php"><div id="avatar" class="avatar"></div></a>
+        <div class="title"> 
+            <h1 id="displayName"></h1>
         </div>
-        <div id="avatar"></div>
+        
+        
+    </div>
+    <div class="homeContainer">
+        <!-- <div id="displayName"></div>
         <div id="email"></div>
-        <div id="url"></div>
-
+        <div id="url" style="display:none"></div> -->
     </div>
     <script defer>
         const profile = <?php echo getSpotifyProfile($userId); ?>;

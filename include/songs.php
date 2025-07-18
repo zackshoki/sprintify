@@ -122,3 +122,19 @@ function constructPlaylist($min, $max, $lengthOfRunInMinutes, $userId) { // GREE
     shuffle($spotifyIds);
     return $spotifyIds;
 }
+
+function echoSongBlocks($playlist) {
+    foreach ($playlist['tracks']['items'] as $item) {
+        $name = $item['track']['name'];
+        $artist = $item['track']['artists'][0]['name'];
+        $url = $item['track']['external_urls']['spotify'];
+        $imageURL = $item['track']['album']['images'][0]['url'];
+        echo '<div class="songBlock">
+                <div class="songNameAndArtist">
+                    <h2>'.$name.'</h2>
+                    <p>'.$artist.'</p>
+                </div>
+                <div class="songImage"><img src="'.$imageURL.'"/></div>
+            </div>';
+    }
+}

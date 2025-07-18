@@ -3,7 +3,7 @@
     $token = tokenSetup(); 
     $userId = $_SESSION['userId'] ?? createUser(tokenSetup());
     $playlistId = getUserPlaylist($userId); 
-
+    $name = getUser($userId)['name'];
     if (!empty($_POST['run_distance']) && !empty($_POST['pace'])) {
         $distance = $_POST['run_distance'];
         $pace = $_POST['pace'];
@@ -19,8 +19,10 @@
 
     $songs = constructPlaylist($tempo - 10, $tempo + 10, $minutes, $userId);
  
-    generatePlaylist($playlistId, $songs, "zack's run", $distance, $pace);
-    $playlist_json = json_encode(getPlaylist($playlistId)); 
+    generatePlaylist($playlistId, $songs, "$name's run", $distance, $pace);
+    $playlist = getPlaylist($playlistId);
+    $playlist_json = json_encode($playlist); 
+
 ?>
 
 <html> 
@@ -28,24 +30,31 @@
         <meta charset="utf-8" name="viewport" content="width=device-width">
         <title>Playlist</title>
         <link rel="stylesheet" href="stylesheets/styles.css">
+        <link rel="stylesheet" href="stylesheets/header.css">
+        <link rel="stylesheet" href="stylesheets/playlist.css">
         <script type="text/javascript" src="scripts/main.js"></script>
         <link rel="stylesheet" href="stylesheets/footer.css">
         
     </head>
 
     <body>
+        <?php echoHeader("new run"); ?>
         <div class="playlistContainer">
-            <div id="playlistImage"></div>
-            <div id="playlistName"></div>
-            <div id="playlistDescription"></div>
+            <a  class="playlistImage" href=<?php echo $playlist['external_urls']['spotify']; ?> target="_blank"><div id="playlistImage" ></div></a>
+            <div class="playlistName"><p id="playlistName"></p></div>
+            <div class="playlistDescription"><p id="playlistDescription"></p></div>
         </div>
-        <div id="songNames"></div> 
+        <div class="sectionTitle" style="margin: 17px 12px;"><p>songs</p></div>
+        <div class="songsContainer">
+            <?php echoSongBlocks($playlist); ?>
+        </div> 
         <?php echoFooter("start"); ?> 
         <script>
             const profile = <?php echo getSpotifyProfile($userId); ?>;
             const playlist = <?php echo $playlist_json; ?>; 
             const songs = <?php echo json_encode($songs, true) ?>;
             showPlaylist(playlist);
+            populateUI(profile);
         </script>
     </body>
 </html>
