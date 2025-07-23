@@ -122,3 +122,28 @@
         ")->fetch()['total_songs']; 
         return $total; 
     }
+    function setUserHeight($userId, $height) {
+        dbQuery("
+            UPDATE users SET height= :height WHERE userId= :userId
+        ", [
+            ':height' => $height, 
+            ':userId' => $userId
+        ]);
+    }
+    function setUserWeight($userId, $weight) {
+        dbQuery("
+            UPDATE users SET weight= :weight WHERE userId= :userId
+        ", [
+            ':weight' => $weight, 
+            ':userId' => $userId
+        ]);
+    }
+
+    function getUserHeight($userId) {
+        $height = getUser($userId)['height'];
+        return $height;
+    }
+    function getUserWeight($userId) {
+        $weight = getUser($userId)['weight'];
+        return $weight;
+    }

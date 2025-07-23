@@ -5,7 +5,12 @@
     // saveTracksToDB($userId); // this was commented out to make reloads faster. still havent found a good way to save all your songs to the db at once. 
     // maybe we should scan all the songs in the database for songs that match the songs that a new user is trying to upload and cancel those uploads while just uploading to the songs to users table
     // also we might store a pointer to what point in the amount of songs that a we are into uploading a specific user's songs and push that counter forward each time we upload data about a new batch or access that the song is available. 
-
+    if (isset($_SESSION['height']) && isset($_SESSION['weight'])) { // after signup
+        setUserHeight($userId, $_SESSION['height']);
+        setUserWeight($userId, $_SESSION['weight']);
+        unset($_SESSION['height']);
+        unset($_SESSION['weight']);
+    }
 
 ?>
 

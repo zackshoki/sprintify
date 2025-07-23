@@ -5,7 +5,12 @@
     // saveTracksToDB($userId); // this was commented out to make reloads faster. still havent found a good way to save all your songs to the db at once. 
     // maybe we should scan all the songs in the database for songs that match the songs that a new user is trying to upload and cancel those uploads while just uploading to the songs to users table
     // also we might store a pointer to what point in the amount of songs that a we are into uploading a specific user's songs and push that counter forward each time we upload data about a new batch or access that the song is available. 
-
+    if (isset($_POST['height']) && isset($_POST['weight'])) {
+        setUserHeight($userId, $_POST['height']);
+        setUserWeight($userId, $_POST['weight']);
+        unset($_POST['height']);
+        unset($_POST['weight']);
+    }
 
 ?>
 
@@ -27,8 +32,17 @@
         <div class="title"> 
             <h1 id="displayName"></h1>
         </div>
-        
-        
+    </div>
+    <div class="homeContainer"> 
+        <form id="userData" action="profile.php" method="POST" class="runFormContainer">
+            <button type="submit"><p>personal info</p></button>
+            <div>
+                <p>height <input type="text" id="runDistance" name="height" value="<?php echo getUserHeight($userId); ?>"/> inches</p> <br>
+            </div>
+            <div>
+                <p>weight: <input type="text" id="pace" name="weight" value="<?php echo getUserWeight($userId); ?>"/> lbs</p> <br> 
+            </div>
+        </form> 
     </div>
     <div class="homeContainer">
         <!-- <div id="displayName"></div>

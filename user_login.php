@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="signUpContainer">
-            <div class="title"><h1>Sprintify</h1></div>
+            <div class="title"  style="margin:6px 0px"><h1>Sprintify</h1></div>
             <button onclick="login()" class="signUpButton"><p>log in with spotify</p></button>
             <div class="signupToLogin"><p>first time? <a href="landing_page.php">sign up</a></p></div>
         </div>

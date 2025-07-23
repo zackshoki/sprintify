@@ -12,10 +12,10 @@
     </head>
     <body>
         <div class="signUpContainer">
-            <div class="title"><h1>Sprintify</h1></div>
+            <div class="title" style="margin:6px 0px"><h1>Sprintify</h1></div>
             <form id="heightWeight" action="login.php" method="POST" class="heightWeightContainer">
                 <div class="heightWeight"><p>height: <input type="text" id="height" name="height" value="73" class="text formContainer"/> inches</p></div>
-                <div class="heightWeight"><p>weight: <input type="text" id="runDistance" name="run_distance" value="225" class="text formContainer"/> lbs </p></div>    
+                <div class="heightWeight"><p>weight: <input type="text" id="runDistance" name="weight" value="225" class="text formContainer"/> lbs </p></div>    
                 <!-- these are currently not sent anywhere      -->
                 
             </form>
