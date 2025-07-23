@@ -23,10 +23,10 @@
 
     <body>
         <?php echoHeader("settings"); ?>
-        <div>
+        <a href="landing_page.php"><div>
             log out?
-        </div>
-        <?php echoFooter("home"); ?>
+        </div></a>
+        <?php echoFooter("settings"); ?>
         <script defer>
         const profile = <?php echo getSpotifyProfile($userId); ?>;
         populateUI(profile);

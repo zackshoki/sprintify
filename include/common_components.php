@@ -30,41 +30,46 @@ function echoHeader($title) {
     </div>';
 }
 function echoFooter($state) {
+    $home = "music_note.svg";
+    $friends = 'gmail_groups.svg';
+    $start = "start.svg";
+    $past = "fast_rewind.svg";
+    $settings = "settings.svg";
     if ($state == "home") {
-        // put different things to echo here
-    } else if ($state = "friends") {
-
-    } else if ($state = "start") {
-
+        $home = "music_note_checked.svg";
+    } else if ($state == "friends") {
+        $friends = "gmail_groups_checked.svg";
+    } else if ($state == "start") {
+        $start = "radio_button_checked.svg";
     } else if ($state == "past") {
-        
+        $past = "fast_rewind_checked.svg";
     } else if ($state == "settings") {
-
+        $settings = "settings_checked.svg";
     }
     echo '<div class="footer">
         <button class="footerButton" onclick="location.href=`index.php`">
             <div class="icons">
-                <img src="assets/music_note_checked.svg" style="width: 100%; height: 100%"/>
+                <img src="assets/'.$home.'" style="width: 100%; height: 100%"/>
             </div>
             <div style="text-align:center;">home</div></button>
         <button class="footerButton">
             <div class="icons">
-                <img src="assets/gmail_groups.svg" style="width: 100%; height: 100%"/>
+                <img src="assets/'.$friends.'" style="width: 100%; height: 100%"/>
             </div>
             <div style="text-align:center;">friends</div></button>
         <button class="footerButton">
             <div class="icons">
-                <img src="assets/start.svg" style="width: 100%; height: 100%" />
+                <img src="assets/'.$start.'" style="width: 100%; height: 100%" />
             </div>
             <div style="text-align:center;">start</div></button>
         <button class="footerButton">
             <div class="icons">
-                <img src="assets/fast_rewind.svg" style="width: 100%; height: 100%" />
+                <img src="assets/'.$past.'" style="width: 100%; height: 100%" />
             </div>
             <div style="text-align:center;">past</div></button>
         <button class="footerButton" onclick="location.href=`settings.php`">
             <div class="icons">
-                <img src="assets/settings.svg" style="width: 100%; height: 100%" />
+                <img src="assets/'.$settings.'" style="width: 100%; height: 100%" />
             </div>
             <div style="text-align:center;">settings</div></button>
     </div>';
