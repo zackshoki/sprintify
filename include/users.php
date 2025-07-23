@@ -93,7 +93,7 @@
             SELECT playlistId FROM users WHERE userId='$userId'
         ")->fetch()['playlistId'] ?? NULL;
         if ($playlistId == NULL) {
-            $playlistId = createPlaylist("zack's workout playlist", "this a test playlist");
+            $playlistId = createPlaylist("zack's workout playlist", "this a test playlist", $userId);
         }
         return $playlistId;
     }
