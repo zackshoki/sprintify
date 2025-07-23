@@ -1,7 +1,8 @@
 <?php
     include('include/init.php');
     $token = tokenSetup(); 
-    $playlistId = getUserPlaylist(1); // userId is hardcoded
+    $userId = $_SESSION['userId'] ?? createUser(tokenSetup());
+    $playlistId = getUserPlaylist($userId); 
 
     if (!empty($_POST['run_distance']) && !empty($_POST['pace'])) {
         $distance = $_POST['run_distance'];
@@ -9,11 +10,14 @@
     } else {
         header('Location: index.php'); // redirect if the distance and pace are not set
     }
-
+    if (!empty($_POST['height'])) {
+        $stride_length = ((float) $_POST['height']) * 0.413 * 0.0254 *2; 
+        setStrideLength($userId, $stride_length);
+    }
     $minutes = distanceToMinutes($_POST['run_distance'], $_POST['pace']);
-    $tempo = paceToTempo($_POST['pace']);
+    $tempo = paceToTempo($_POST['pace'], $userId);
 
-    $songs = constructPlaylist($tempo - 10, $tempo + 10, $minutes);
+    $songs = constructPlaylist($tempo - 10, $tempo + 10, $minutes, $userId);
  
     generatePlaylist($playlistId, $songs, "zack's run", $distance, $pace);
     $playlist_json = json_encode(getPlaylist($playlistId)); 
@@ -33,7 +37,7 @@
         <div id="playlistImage"></div>
         <div id="songNames"></div> 
         <script>
-            const profile = <?php echo getSpotifyProfile(1); // userId is hardcoded ?>;
+            const profile = <?php echo getSpotifyProfile($userId); ?>;
             const playlist = <?php echo $playlist_json; ?>; 
             const songs = <?php echo json_encode($songs, true) ?>;
             showPlaylist(playlist);

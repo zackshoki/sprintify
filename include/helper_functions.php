@@ -4,8 +4,8 @@
         $clean = htmlspecialchars(print_r($array, true ));
         echo "<pre>".$clean."</pre>";
     }
-    function paceToTempo($pace) { // running cadence calculations... potentiallly have an option for runners to either enter their height, enter their steps per minute, or link their strava for more accurate calculations
-        $strideLength = getStrideLength(1); // userId is hard coded for now. stride length is in meters
+    function paceToTempo($pace, $userId) { // running cadence calculations... potentiallly have an option for runners to either enter their height, enter their steps per minute, or link their strava for more accurate calculations
+        $strideLength = getStrideLength($userId); // stride length is in meters
         $tempo = 1609.34/(floatval($pace)*floatval($strideLength)); // accuracy could definitely be improved
         return $tempo;
     }

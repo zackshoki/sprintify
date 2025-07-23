@@ -1,15 +1,12 @@
 <?php
 
-function createPlaylist($name, $description) {
+function createPlaylist($name, $description, $userId) {
     $token = tokenSetup();
     $postData = [
         "name" => $name,
         "description" => $description,
         "public" => false
     ];
-
-    $user = getUser(1); // userId is hardcoded
-    $userId = $user['userId'];
 
     $playlist = makeSpotifyPostRequest($token, "users/317xhhb2qgw32elx7ebxeltoadb4/playlists", $postData);
     sendPlaylistIdToDB($playlist['id'], $userId);

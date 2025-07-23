@@ -50,9 +50,9 @@ function totalSavedTracks($token) {
     return $tracksInfo['total'];
 }
 
-function getAllSavedTracks() { 
-    global $token;
-    $totalTracks = getTotalSongs(1); // userId is hardcoded
+function getAllSavedTracks($userId) { 
+    $token = tokenSetup();
+    $totalTracks = getTotalSongs($userId);
     $loopNumber = ($totalTracks - ($totalTracks % 50)) / 50;
     $remainderTracks = $totalTracks % 50;
     
