@@ -63,7 +63,7 @@ function echoFooter($state) {
             </div>
             <div style="text-align:center;">start</div></button>
         <button class="footerButton">
-            <div class="icons">
+            <div class="icons" onclick="location.href=`past_runs.php`">
                 <img src="assets/'.$past.'" style="width: 100%; height: 100%" />
             </div>
             <div style="text-align:center;">past</div></button>
@@ -73,4 +73,27 @@ function echoFooter($state) {
             </div>
             <div style="text-align:center;">settings</div></button>
     </div>';
+}
+
+function echoPastRuns($userId) {
+    $past_runs = getPastRuns($userId);
+    echo '<div class="songsContainer" id="past_runs"> ';
+    foreach ($past_runs as $past_run) {
+        $name = $past_run['run_distance']." miles, ".$past_run['pace']." min/mi";
+        $artist = $past_run['date'];
+        $id = $past_run['id'];
+        // $url = $item['track']['external_urls']['spotify'];
+        $imageURL = $past_run['image'];
+
+        // need to
+        // store links to the playlist in the database as part of past runs. 
+        echo '<a href="https://open.spotify.com/playlist/'.$id.'"><div class="songBlock">
+                <div class="songNameAndArtist">
+                    <h2>'.$name.'</h2>
+                    <p>'.$artist.'</p>
+                </div>
+                <div class="songImage"><img src="data:image/png;base64, '.$imageURL.'"/></div>
+            </div></a>';
+    }
+    echo "</div>";
 }

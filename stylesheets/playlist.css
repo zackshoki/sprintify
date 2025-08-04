@@ -46,6 +46,7 @@ h2 {
     flex-direction: row;
     justify-content: space-between;
     height: 100px;
+    color: black;
 }
 .songNameAndArtist {
     flex-grow: 3;

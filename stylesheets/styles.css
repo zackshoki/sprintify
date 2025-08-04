@@ -117,3 +117,12 @@ h1 {
     margin-left: 0px;
     color: #ffffff;
 } 
+input:focus {
+   outline:none;
+   border-bottom-style: solid;
+   border-bottom-color: #0f0f0f;
+}
+
+a {
+    text-decoration: none;
+}

@@ -147,3 +147,38 @@
         $weight = getUser($userId)['weight'];
         return $weight;
     }
+    function getPastRuns($userId) { // format is an array of run distances, runpaces, datetimes, and album cover pics. 
+        $past_runs = getUser($userId)['past_runs'];
+        $past_runs = json_decode($past_runs, true) ?? [];
+        return $past_runs;
+    }
+    function setPastRuns($userId, $past_runs) {
+        dbQuery("
+            UPDATE users SET past_runs= :past_runs WHERE userId= :userId
+        ", [
+            ':past_runs' => $past_runs, 
+            ':userId' => $userId
+        ]);
+    }
+    function disconnectPlaylist($userId) {
+        dbQuery("
+            UPDATE users SET playlistId= NULL WHERE userId= :userId
+        ", [
+            ':userId' => $userId
+        ]);
+    }
+    function saveRun($userId, $run_distance, $pace, $image, $id) {
+        $date = date("m/d/Y");
+        $run = [
+            "run_distance" => $run_distance, 
+            "pace" => $pace,
+            "date" => $date,
+            "image" => $image,
+            "id" => $id
+        ];
+        $past_runs = getPastRuns($userId);
+        if ($past_runs == null) {$past_runs[] = $run;}  else {array_push($past_runs, $run);}
+        $past_runs = json_encode($past_runs);
+        setPastRuns($userId, $past_runs);
+        disconnectPlaylist($userId);
+    }
