@@ -89,11 +89,12 @@
         return $stride_length;
     }
     function getUserPlaylist($userId) {
+        global $distance, $pace, $name;
         $playlistId = dbQuery("
             SELECT playlistId FROM users WHERE userId='$userId'
         ")->fetch()['playlistId'] ?? NULL;
         if ($playlistId == NULL) {
-            $playlistId = createPlaylist("zack's workout playlist", "this a test playlist");
+            $playlistId = createPlaylist($name. "'s run", $distance ." miles, ". $pace . " min/mi", $userId);
         }
         return $playlistId;
     }

@@ -1,6 +1,7 @@
 <?php
 
-function createPlaylist($name, $description) {
+function createPlaylist($name, $description, $userId) {
+    $id = json_decode(getUser($userId)['profile'], true)['id'];
     $token = tokenSetup();
     $postData = [
         "name" => $name,
@@ -9,7 +10,7 @@ function createPlaylist($name, $description) {
     ];
     $userId = $_SESSION['userId'] ?? createUser(tokenSetup());
 
-    $playlist = makeSpotifyPostRequest($token, "users/317xhhb2qgw32elx7ebxeltoadb4/playlists", $postData);
+    $playlist = makeSpotifyPostRequest($token, "users/$id/playlists", $postData);
     sendPlaylistIdToDB($playlist['id'], $userId);
     return $playlist['id'];
 }
@@ -50,7 +51,14 @@ function clearPlaylist($playlistId) {
     $url = "playlists/$playlistId/tracks";
 
     $data = makeSpotifyPostRequest($token, $url, $postData, true);
-    
+    // update description and name 
+    $url = 'playlists/'.$playlistId;
+    $postData = [
+        'name' => "loading...", 
+        'description' => "updating..."
+    ];
+    unset($postData['uris']);
+    makeSpotifyPostRequest($token, $url, $postData, true);
     return $data;
 }
 
@@ -59,6 +67,7 @@ function getPlaylist($playlistId) {
 }
 
 function generatePlaylist($playlistId, $songIds, $name, $runDistance, $pace) {
+    // descriptions do not update correctly if youre wifi is bad????
     clearPlaylist($playlistId); 
     updatePlaylist($playlistId, $songIds, $runDistance, $pace, $name); 
 }

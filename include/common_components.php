@@ -77,7 +77,7 @@ function echoFooter($state) {
 
 function echoPastRuns($userId) {
     $past_runs = getPastRuns($userId);
-    echo '<div class="songsContainer" id="past_runs"> ';
+    echo '<div class="songsContainer" id="past_runs" style="flex-direction:column-reverse"> ';
     foreach ($past_runs as $past_run) {
         $name = $past_run['run_distance']." miles, ".$past_run['pace']." min/mi";
         $artist = $past_run['date'];
@@ -87,7 +87,7 @@ function echoPastRuns($userId) {
 
         // need to
         // store links to the playlist in the database as part of past runs. 
-        echo '<a href="https://open.spotify.com/playlist/'.$id.'"><div class="songBlock">
+        echo '<a href="https://open.spotify.com/playlist/'.$id.'" target="_blank"><div class="songBlock">
                 <div class="songNameAndArtist">
                     <h2>'.$name.'</h2>
                     <p>'.$artist.'</p>

@@ -2,7 +2,7 @@
     include('include/init.php');
     $token = tokenSetup(); 
     $userId = $_SESSION['userId'] ?? createUser(tokenSetup());
-    $playlistId = getUserPlaylist($userId); 
+    
     $name = getUser($userId)['name'];
     if (!empty($_POST['run_distance']) && !empty($_POST['pace'])) {
         $distance = $_POST['run_distance'];
@@ -10,6 +10,7 @@
     } else {
         header('Location: index.php'); // redirect if the distance and pace are not set
     }
+    $playlistId = getUserPlaylist($userId); 
     if (!empty($_POST['height'])) {
         $stride_length = ((float) $_POST['height']) * 0.413 * 0.0254 *2; 
         setStrideLength($userId, $stride_length);
@@ -18,7 +19,6 @@
     $tempo = paceToTempo($_POST['pace']);
 
     $songs = constructPlaylist($tempo - 10, $tempo + 10, $minutes, $userId);
- 
     generatePlaylist($playlistId, $songs, "$name's run", $distance, $pace);
     $playlist = getPlaylist($playlistId);
     $playlist_json = json_encode($playlist); 
