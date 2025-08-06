@@ -43,7 +43,6 @@
             <button type="submit"><p>go!</p></button>
         </form> 
     </div>
-    <div class="sectionTitle" style="margin: 17px 12px;"><p>past runs</p></div>
     <?php echoPastRuns($userId); ?>
     <?php echoFooter("home"); ?>
     <script defer>

@@ -21,9 +21,9 @@ function tokenSetup() {
 function echoHeader($title) {
     echo '<div class="header">
         <div class="title"> 
-            <h1>'.$title.'</h1>
+            <h1 style="width: max-content">'.$title.'</h1>
         </div>
-        <a href="profile.php"><div id="avatar" class="avatar"></div></a>
+        <a href="profile.php" style="max-height: 100%;display: flex;flex-direction: row-reverse;"><div id="avatar" class="avatar"></div></a>
         <!-- <div id="displayName"></div>
         <div id="email"></div>
         <div id="url" style="display:none"></div> -->
@@ -77,7 +77,9 @@ function echoFooter($state) {
 
 function echoPastRuns($userId) {
     $past_runs = getPastRuns($userId);
-    echo '<div class="songsContainer" id="past_runs" style="flex-direction:column-reverse"> ';
+    
+    echo '<div class="songsContainer" id="past_runs" style="flex-direction:column-reverse; margin-bottom:25px;"> ';
+    
     foreach ($past_runs as $past_run) {
         $name = $past_run['run_distance']." miles, ".$past_run['pace']." min/mi";
         $artist = $past_run['date'];
@@ -95,5 +97,6 @@ function echoPastRuns($userId) {
                 <div class="songImage"><img src="data:image/png;base64, '.$imageURL.'"/></div>
             </div></a>';
     }
+    echo '<div class="sectionTitle"><p>past runs</p></div>';
     echo "</div>";
 }

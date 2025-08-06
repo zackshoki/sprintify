@@ -11,7 +11,7 @@ h1 {
     margin: 8px 12px;
     margin-top: 20px;
 }
-.title {
+.title, .signUpButton {
     background: #FFFFFF;
     border: 1px solid #000000;
     font-family: 'Inter';
@@ -28,12 +28,30 @@ h1 {
     padding: 5px 9px;
     margin-left: 0px;
     margin-right: 0px;
+    border: 1.5px solid #CE87D9;
+    border-radius: 39px;
+    padding: 10px 25px;
+    background: #242424;
+
+font-family: 'Inter';
+font-style: normal;
+font-size: 17px;
+line-height: 22px;
+/* identical to box height, or 129% */
+text-align: center;
+box-shadow: 0px 0px 5px 0px #070208;
+/* Primary Purple */
+color: #CE87D9;
+
+
 }
+
 .avatar {
-    max-height: 34px;
-    max-width: 34px;
+    height: 100%;
+    width: auto;
     aspect-ratio: 1;
-    display:flex;
+    display: flex;
+    flex-direction: row;
     
 }
 .avatar > img {
@@ -42,7 +60,13 @@ h1 {
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 100%;
-    border-style:solid;
+    border-style:none;
+    box-shadow: 0px 0px 5px 0px #070208;
     border-color: #000000;
     align-self: center
 }   
+.signUpButton {
+    border-color: #1DB954;
+    border-width: 2px;
+    color: #f6eef7df;
+}

@@ -1,9 +1,14 @@
 body {
     padding-bottom: 50px;
+    color: #F6EEF7;
 }
 p {
     margin-block: 0px; 
     margin-inline: 0px;
+    color: #F6EEF7;
+}
+a:-webkit-any-link {
+        color: #f6eef7df; 
 }
 
 p, .text, .runFormContainer input {
@@ -15,6 +20,7 @@ p, .text, .runFormContainer input {
     /* identical to box height, or 129% */
     text-align: left;
     color: #0d0d0d;
+     color: #f6eef7df; 
     margin: 0px;
 }
 
@@ -53,46 +59,61 @@ h1 {
 }
 .heightWeight > p {
     text-align: left;
+    padding: 3px;
 }
 
 .formContainer {
     text-align: left;
     border-style: hidden;
-    background-color: #eeeeee;
+    background-color: inherit;
 }
 
-.homeContainer {
+
+.homeContainer, .heightWeightContainer {
     display: flex;
     flex-direction: column;
     margin: 17px 12px;
-    gap: 17px;
+    gap: 6px;
+    background-color: #353135;
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px 0px #070208;
+
+}
+.heightWeightContainer {
+    gap: 10px;
+    margin: 0px;
 }
 
+
 .sectionTitle {
-    width: 198px;
-    height: 71px;
     display: flex;
-    background-color: #dddddd;
+    background-color: inherit;
 }
 
 .sectionTitle > p, .runFormContainer button[type="submit"] > p {
     margin-left: 5px;
     margin-bottom: 2px;
     align-self: flex-end;
+    font-weight: 520;
 }
 
 .runFormContainer {
-    background-color: #cccccc;
+    background-color: inherit;
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    gap: 5px;
+    padding: 0px;
+    gap: 8px;
+    margin-block-end: 0px; 
+
 }
 
-.runFormContainer > div {
-    background-color: #eeeeee;
-    padding: 3px;
+.runFormContainer > div, .heightWeightContainer > div {
+    background-color: #544C55;
+    padding: 5px;
     display: flex;
+    border-radius: 10px;
+        box-shadow: 0px 0px 5px 0px #3900443e;
 }
 .runFormContainer > div p {
     margin-left: 4px;
@@ -101,26 +122,33 @@ h1 {
 }
 .runFormContainer input[type="text"] {
     max-width: 20%; 
-    background-color: #eeeeee;
+    background-color: #544C55;
     height: auto;
     border-style: none;
     border-bottom-style: solid;
 }
-.runFormContainer button[type="submit"], .personalInfo {
+.runFormContainer button[type="submit"], .heightWeightContainer input[type="submit"], .personalInfo, .savePlaylist {
     width: 148px;
     height: 97px;
     display: flex;
-    background-color: #5b5b5b;
+    background-color: #CE87D9;
     border-style: none;
+    border-radius: 10px;
+        box-shadow: 0px 0px 5px 0px #3900443e;
 }
-.runFormContainer button[type="submit"] > p, .personalInfo > p {
+.runFormContainer button[type="submit"] > p, .personalInfo > p, .savePlaylist > p {
     margin-left: 0px;
-    color: #ffffff;
+    padding: 2px;
 } 
+.savePlaylist > p {
+    display: flex;
+    flex-direction: column-reverse; 
+    margin: 4px;
+}
 input:focus {
    outline:none;
    border-bottom-style: solid;
-   border-bottom-color: #0f0f0f;
+   border-bottom-color: #f6eef7df;
 }
 
 a {
@@ -134,4 +162,12 @@ body, p, h1, input {
 #save {
     margin: 9px 12px;
     margin-bottom: 50px;
+}
+body {
+    background-color: #1C1C1C;
+}
+
+.signUpButton {
+    border-color: #1DB954;
+    color: #f6eef7df;
 }

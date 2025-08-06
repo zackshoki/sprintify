@@ -26,7 +26,6 @@
 
     <body>
         <?php echoHeader("past"); ?>
-        <div class="sectionTitle" style="margin: 17px 12px;"><p>past runs</p></div>
         <?php echoPastRuns($userId); ?> 
         <?php echoFooter("past"); ?>
         <script defer>
