@@ -126,3 +126,12 @@ input:focus {
 a {
     text-decoration: none;
 }
+body, p, h1, input {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+#save {
+    margin: 9px 12px;
+    margin-bottom: 50px;
+}

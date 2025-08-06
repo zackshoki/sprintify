@@ -55,7 +55,7 @@
             <input name="pace" type="text" value="<?php echo $pace ?>" style="display:none;"/>
             <input name="image" type="text" value="<?php echo $image_blob ?>" style="display:none;"/>
             <input name="playlist_id" type="text" value="<?php echo $playlistId ?>" style="display:none;"/>
-            <input class="sectionTitle" style="background-color: #f0f0f0" type="submit" value="save" />
+            <button class="sectionTitle" style="background-color: #f0f0f0" type="submit" id="save"><p>save</p></button> 
         </form>
         <?php echoFooter("start"); ?> 
         <script>
