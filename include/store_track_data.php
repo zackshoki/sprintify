@@ -1,7 +1,7 @@
 <?php
 
-function getSavedTracksFromSpotify() {
-    $savedTracksFromSpotify = getAllSavedTracks();
+function getSavedTracksFromSpotify($userId) {
+    $savedTracksFromSpotify = getAllSavedTracks($userId);
     return $savedTracksFromSpotify;
 }
 function saveTracksToDB($userId, $savedTracksFromSpotify) { //figure out how to mmake this happen in the background
