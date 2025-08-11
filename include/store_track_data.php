@@ -1,4 +1,5 @@
 <?php
+
 function getSavedTracksFromSpotify() {
     $savedTracksFromSpotify = getAllSavedTracks();
     return $savedTracksFromSpotify;

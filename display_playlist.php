@@ -16,7 +16,7 @@
         setStrideLength($userId, $stride_length);
     }
     $minutes = distanceToMinutes($_POST['run_distance'], $_POST['pace']);
-    $tempo = paceToTempo($_POST['pace']);
+    $tempo = paceToTempo($_POST['pace'], $userId);
 
     $songs = constructPlaylist($tempo - 10, $tempo + 10, $minutes, $userId);
     generatePlaylist($playlistId, $songs, "$name's run", $distance, $pace);
