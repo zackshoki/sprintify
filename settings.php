@@ -25,9 +25,11 @@
 
     <body>
         <?php echoHeader("settings"); ?>
-        <a href="landing_page.php"><div>
+        <div style="margin:15px">
+        <a href="landing_page.php" style="color: #CE87D9; text-decoration:underline;"><div>
             log out?
         </div></a>
+        </div>
         <?php echoFooter("settings"); ?>
         <script defer>
         const profile = <?php echo getSpotifyProfile($userId); ?>;

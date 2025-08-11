@@ -7,8 +7,7 @@ function populateUI(profile) {
         document.getElementById("avatar").appendChild(profileImage);
     }
     if (document.getElementById("email") != null) {document.getElementById("email").innerText = profile.email;}
-    if (document.getElementById("url") != null) {document.getElementById("url").innerText = profile.href;}
-    if (document.getElementById("url") != null) {document.getElementById("url").setAttribute("href", profile.href)};
+    if (document.getElementById("url") != null) {document.getElementById("url").setAttribute("href", profile.external_urls.spotify)};
 }
 
 function showPlaylist(playlist) {
@@ -24,7 +23,7 @@ function showPlaylist(playlist) {
     // });
 
     // document.getElementById("songNames").innerText = JSON.stringify(songNames);
-    document.getElementById("playlistDescription").innerHTML = playlist.description;
+    // document.getElementById("playlistDescription").innerHTML = playlist.description;
     document.title = playlist.name;
 }
 

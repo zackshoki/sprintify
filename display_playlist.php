@@ -44,7 +44,7 @@
         <div class="playlistContainer">
             <a  class="playlistImage" href=<?php echo $playlist['external_urls']['spotify']; ?> target="_blank"><div id="playlistImage" ></div></a>
             <div class="playlistName"><p id="playlistName"></p></div>
-            <div class="playlistDescription"><p id="playlistDescription"></p></div>
+            <div class="playlistDescription"><p><?php echo $distance." miles, ". $pace ." min/mi pace" ?></p></div>
         </div>
         <div class="songsContainer">
             <div class="sectionTitle"><p>songs</p></div>

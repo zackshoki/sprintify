@@ -46,11 +46,10 @@
             </div>
         </form> 
     </div>
-    <!-- <div class="homeContainer">
-        <div id="displayName"></div>
-        <div id="email"></div>
-        <div id="url" style="display:none"></div>
-    </div> -->
+   <div class="homeContainer">
+        <div><span>email:</span> <span id="email"></span></div>
+        <a id="url" target="_blank" style="color: #CE87D9">spotify profile</div></a>
+    </div> 
     <script defer>
         const profile = <?php echo getSpotifyProfile($userId); ?>;
         populateUI(profile);
