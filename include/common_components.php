@@ -77,7 +77,9 @@ function echoFooter($state) {
 
 function echoPastRuns($userId) {
     $past_runs = getPastRuns($userId);
-    
+    if (is_null($past_runs)) {
+        return;
+    }
     echo '<div class="songsContainer" id="past_runs" style="flex-direction:column-reverse; margin-bottom:25px;"> ';
     
     foreach ($past_runs as $past_run) {

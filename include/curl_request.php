@@ -14,7 +14,10 @@ function makeSpotifyGetRequest($token, $url, $formatted_fields)
         CURLOPT_RETURNTRANSFER => TRUE
 
     ];
-
+    if ($formatted_fields == "") {
+       $spotify_curl_options[CURLOPT_URL] = $spotifyURL.$url;
+    }
+    
     $data = runCurlRequest($spotify_curl, $spotify_curl_options);
     return $data; 
     
@@ -90,13 +93,15 @@ function spotifyIdsToReccoData($spotifyIds) {
 
     foreach (array_chunk($spotifyIds, 40) as $chunk) {
         $curl_options = [
-            CURLOPT_URL => $reccoURL."track?ids=".implode(",", $chunk),
+            CURLOPT_URL => $reccoURL."track?ids=".implode(",", $chunk), // make sure this data is formatted in the same way that the analyze tracks method would format it 
             CURLOPT_HTTPHEADER => [
                 'Accept: application/json'
             ],
             CURLOPT_RETURNTRANSFER => TRUE,
         ];
         $data = runCurlRequest($curl, $curl_options);
+        // array_push($tracksFeatures, $data);
+
         foreach ($data['content'] as $track) {
             $songId = $track['id'];
             $reccoIds[$songId] = $track;
@@ -105,24 +110,50 @@ function spotifyIdsToReccoData($spotifyIds) {
 
     return $reccoIds;
 }
-
-function analyzeTracks($tracks) { // takes an array of track metadata like the one returned from spotifyIdsToReccoData and gets the audio analysis from each one 
-    global $reccoURL; 
+function analyzeTracks($spotifyIds) { 
+    global $reccoURL;
     $curl = curl_init(); 
+    $reccoIds = [];
     $tracksFeatures = [];
-    foreach ($tracks as $track) {
-    
+    foreach (array_chunk($spotifyIds, 40) as $chunk) {
         $curl_options = [
-            CURLOPT_URL => $reccoURL."track/".$track['id']."/audio-features",
+            CURLOPT_URL => $reccoURL."audio-features?ids=".implode(",", $chunk), // make sure this data is formatted in the same way that the analyze tracks method would format it 
             CURLOPT_HTTPHEADER => [
                 'Accept: application/json'
             ],
             CURLOPT_RETURNTRANSFER => TRUE,
-            
         ];
-        $data = runCurlRequest($curl, $curl_options);
-
-        array_push($tracksFeatures, $data);
+        $data = runCurlRequest($curl, $curl_options)['content'];
+        foreach ($data as $trackFeatures) {
+            array_push($tracksFeatures, $trackFeatures);
+        }
+        
+        // foreach ($data['content'] as $track) {
+        //     $songId = $track['id'];
+        //     $reccoIds[$songId] = $track;
+        // }
     }
     return $tracksFeatures;
 }
+
+
+// function analyzeTracks($tracks) { // takes an array of track metadata like the one returned from spotifyIdsToReccoData and gets the audio analysis from each one 
+//     global $reccoURL; 
+//     $curl = curl_init(); 
+//     $tracksFeatures = [];
+//     foreach ($tracks as $track) {
+    
+//         $curl_options = [
+//             CURLOPT_URL => $reccoURL."track/".$track['id']."/audio-features",
+//             CURLOPT_HTTPHEADER => [
+//                 'Accept: application/json'
+//             ],
+//             CURLOPT_RETURNTRANSFER => TRUE,
+            
+//         ];
+//         $data = runCurlRequest($curl, $curl_options);
+
+//         array_push($tracksFeatures, $data);
+//     }
+//     return $tracksFeatures;
+// }

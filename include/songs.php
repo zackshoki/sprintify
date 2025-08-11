@@ -17,7 +17,6 @@ function getUsersSongs()
 function mergeSongDataFromRecco($trackMetaData, $trackTempoData)
 {
     $mergedTrackData = [];
-
     foreach ($trackTempoData as $track) {
         $trackId = $track['id'];
         $trackInfo = $trackMetaData[$trackId];
@@ -52,6 +51,7 @@ function storeTrackData($fullTrackData, $userId)
         $rows[] = "($name, $artist, $tempo, $spotifyId, $reccoId, $length)";
         $songToUserIds[] = "($spotifyId, $userId)";
     }
+    debugOutput($rows);
     if (!empty($rows)) {
         dbQuery("
             INSERT IGNORE INTO songs (name, artist, tempo, spotifyId, reccoId, length) VALUES " . implode(", ", $rows) . "

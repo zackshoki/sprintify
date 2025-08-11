@@ -150,7 +150,9 @@
     }
     function getPastRuns($userId) { // format is an array of run distances, runpaces, datetimes, and album cover pics. 
         $past_runs = getUser($userId)['past_runs'];
-        $past_runs = json_decode($past_runs, true) ?? [];
+        if (!is_null($past_runs)) {
+            $past_runs = json_decode($past_runs, true) ?? [];
+        }
         return $past_runs;
     }
     function setPastRuns($userId, $past_runs) {
