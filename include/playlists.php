@@ -66,7 +66,6 @@ function getPlaylist($playlistId) {
 }
 
 function generatePlaylist($playlistId, $songIds, $name, $runDistance, $pace) {
-    // descriptions do not update correctly if youre wifi is bad????
     clearPlaylist($playlistId); 
     updatePlaylist($playlistId, $songIds, $runDistance, $pace, $name); 
 }

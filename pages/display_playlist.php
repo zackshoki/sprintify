@@ -1,5 +1,5 @@
 <?php
-    include('include/init.php');
+    include('../include/init.php');
     $token = tokenSetup(); 
     $userId = $_SESSION['userId'] ?? createUser(tokenSetup());
     
@@ -8,7 +8,7 @@
         $distance = $_POST['run_distance'];
         $pace = $_POST['pace'];
     } else {
-        header('Location: index.php'); // redirect if the distance and pace are not set
+        header('Location: ../index.php'); // redirect if the distance and pace are not set
     }
     $playlistId = getUserPlaylist($userId); 
     if (!empty($_POST['height'])) {
@@ -31,11 +31,11 @@
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width">
         <title>Playlist</title>
-        <link rel="stylesheet" href="stylesheets/styles.css">
-        <link rel="stylesheet" href="stylesheets/header.css">
-        <link rel="stylesheet" href="stylesheets/playlist.css">
-        <script type="text/javascript" src="scripts/main.js"></script>
-        <link rel="stylesheet" href="stylesheets/footer.css">
+        <link rel="stylesheet" href="../stylesheets/styles.css">
+        <link rel="stylesheet" href="../stylesheets/header.css">
+        <link rel="stylesheet" href="../stylesheets/playlist.css">
+        <script type="text/javascript" src="../scripts/main.js"></script>
+        <link rel="stylesheet" href="../stylesheets/footer.css">
         
     </head>
 
@@ -50,7 +50,7 @@
             <div class="sectionTitle"><p>songs</p></div>
             <?php echoSongBlocks($playlist); ?>
         </div> 
-        <form action="save_playlist.php" method="POST">
+        <form action="../process/save_playlist.php" method="POST">
             <input name="run_distance" type="text" value="<?php echo $distance ?>" style="display:none;"/>
             <input name="pace" type="text" value="<?php echo $pace ?>" style="display:none;"/>
             <input name="image" type="text" value="<?php echo $image_blob ?>" style="display:none;"/>

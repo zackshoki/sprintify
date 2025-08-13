@@ -10,12 +10,9 @@
         ];
         $postData = http_build_query($data);
         $postDataEscaped = escapeshellarg($postData);
-        exec("curl -X POST -d {$postDataEscaped} http://localhost:8888/saving_tracks.php > /dev/null 2>&1 &"); 
+        exec("curl -X POST -d {$postDataEscaped} http://localhost:8888/process/saving_tracks.php > /dev/null 2>&1 &"); 
     }
-    // this was commented out to make reloads faster. still havent found a good way to save all your songs to the db at once. 
-    // maybe we should scan all the songs in the database for songs that match the songs that a new user is trying to upload and cancel those uploads while just uploading to the songs to users table
-    // also we might store a pointer to what point in the amount of songs that a we are into uploading a specific user's songs and push that counter forward each time we upload data about a new batch or access that the song is available. 
-    if (isset($_SESSION['height']) && isset($_SESSION['weight'])) { // after signup
+    if (isset($_SESSION['height']) && isset($_SESSION['weight'])) { 
         setUserHeight($userId, $_SESSION['height']);
         setUserWeight($userId, $_SESSION['weight']);
         unset($_SESSION['height']);
@@ -43,7 +40,7 @@
     <?php echoHeader("Sprintify"); ?>
     <div class="homeContainer"> 
         <div class="sectionTitle"><p>new run</p></div>
-        <form id="userData" action="display_playlist.php" method="POST" class="runFormContainer">
+        <form id="userData" action="pages/display_playlist.php" method="POST" class="runFormContainer">
             <div>
                 <p>distance: <input type="text" id="runDistance" name="run_distance" value="3"/> miles</p> <br>
             </div>

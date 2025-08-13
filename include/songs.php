@@ -64,7 +64,7 @@ function storeTrackData($fullTrackData, $userId)
 }
 
 function getSongList($min, $max, $userId) { // gets all songs with a bpm between the values given and returns their spotifyids in an array format, store the length values of each song in the array as well
-    // this function should probably take both half-times (divide by 2) and double-times (multiply by 2) of the given min and max to account for clear issues of tempo calculations
+    // this function takes both half-times (divide by 2) and double-times (multiply by 2) of the given min and max to account for clear issues of tempo calculations
     if ($min < 0) {
         $min = 0; 
     }
@@ -86,7 +86,7 @@ function getSongList($min, $max, $userId) { // gets all songs with a bpm between
             AND userId = :userId
     ", [
         ':userId' => $userId
-    ])->fetchAll() ?? NULL; // potentially take tempo and name and display these in some way?
+    ])->fetchAll() ?? NULL; 
     
     $songList = array_filter($songList);
     return $songList;
@@ -113,7 +113,7 @@ function constructPlaylist($min, $max, $lengthOfRunInMinutes, $userId) { // GREE
             $i = 0; 
         } else if ($min < 0 && $max > 300) { // error handling
             echo "ERROR, please save more songs for a run this long! <br>";
-            echo "<a href='index.php'>retry?</a>";
+            echo "<a href='http://[::1]:8888/index.php'>retry?</a>";
             die;
         } 
     }

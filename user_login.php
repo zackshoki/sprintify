@@ -7,8 +7,7 @@
         <script type="text/javascript" src="scripts/main.js"></script>
         <script defer>
             function login() {
-                // submit the form first
-                window.location.href = 'login.php';
+                window.location.href = 'http://localhost:8888/process/login.php';
             }
         </script>
         <link rel="preconnect" href="https://fonts.googleapis.com">

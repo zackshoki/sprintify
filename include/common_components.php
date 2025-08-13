@@ -8,7 +8,7 @@ function tokenSetup() {
             $userId = createUser($token);
             $_SESSION['userId'] = $userId;
         } else {
-            header('Location: login.php'); // work on refresh tokens in the future. 
+            header('Location: http://localhost:8888/process/login.php'); // work on refresh tokens in the future. 
         }   
     } else {
         $token = $_COOKIE['spotify_token'];
@@ -47,29 +47,29 @@ function echoFooter($state) {
         $settings = "settings_checked.svg";
     }
     echo '<div class="footer">
-        <button class="footerButton" onclick="location.href=`index.php`">
+        <button class="footerButton" onclick="location.href=`http://[::1]:8888/index.php`">
             <div class="icons">
-                <img src="assets/'.$home.'" style="width: 100%; height: 100%"/>
+                <img src="../assets/'.$home.'" style="width: 100%; height: 100%"/>
             </div>
             <div style="text-align:center;">home</div></button>
         <button class="footerButton">
             <div class="icons">
-                <img src="assets/'.$friends.'" style="width: 100%; height: 100%"/>
+                <img src="../assets/'.$friends.'" style="width: 100%; height: 100%"/>
             </div>
             <div style="text-align:center;">friends</div></button>
         <button class="footerButton">
             <div class="icons">
-                <img src="assets/'.$start.'" style="width: 100%; height: 100%" />
+                <img src="../assets/'.$start.'" style="width: 100%; height: 100%" />
             </div>
             <div style="text-align:center;">start</div></button>
         <button class="footerButton">
-            <div class="icons" onclick="location.href=`past_runs.php`">
-                <img src="assets/'.$past.'" style="width: 100%; height: 100%" />
+            <div class="icons" onclick="location.href=`http://[::1]:8888/pages/past_runs.php`">
+                <img src="../assets/'.$past.'" style="width: 100%; height: 100%" />
             </div>
             <div style="text-align:center;">past</div></button>
-        <button class="footerButton" onclick="location.href=`settings.php`">
+        <button class="footerButton" onclick="location.href=`http://[::1]:8888/pages/settings.php`">
             <div class="icons">
-                <img src="assets/'.$settings.'" style="width: 100%; height: 100%" />
+                <img src="../assets/'.$settings.'" style="width: 100%; height: 100%" />
             </div>
             <div style="text-align:center;">settings</div></button>
     </div>';
@@ -86,11 +86,8 @@ function echoPastRuns($userId) {
         $name = $past_run['run_distance']." miles, ".$past_run['pace']." min/mi";
         $artist = $past_run['date'];
         $id = $past_run['id'];
-        // $url = $item['track']['external_urls']['spotify'];
         $imageURL = $past_run['image'];
 
-        // need to
-        // store links to the playlist in the database as part of past runs. 
         echo '<a href="https://open.spotify.com/playlist/'.$id.'" target="_blank"><div class="songBlock">
                 <div class="songNameAndArtist">
                     <h2>'.$name.'</h2>

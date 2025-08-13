@@ -92,14 +92,13 @@ function spotifyIdsToReccoData($spotifyIds) {
 
     foreach (array_chunk($spotifyIds, 40) as $chunk) {
         $curl_options = [
-            CURLOPT_URL => $reccoURL."track?ids=".implode(",", $chunk), // make sure this data is formatted in the same way that the analyze tracks method would format it 
+            CURLOPT_URL => $reccoURL."track?ids=".implode(",", $chunk), 
             CURLOPT_HTTPHEADER => [
                 'Accept: application/json'
             ],
             CURLOPT_RETURNTRANSFER => TRUE,
         ];
         $data = runCurlRequest($curl, $curl_options);
-        // array_push($tracksFeatures, $data);
 
         foreach ($data['content'] as $track) {
             $songId = $track['id'];
@@ -116,7 +115,7 @@ function analyzeTracks($spotifyIds) {
     $tracksFeatures = [];
     foreach (array_chunk($spotifyIds, 40) as $chunk) {
         $curl_options = [
-            CURLOPT_URL => $reccoURL."audio-features?ids=".implode(",", $chunk), // make sure this data is formatted in the same way that the analyze tracks method would format it 
+            CURLOPT_URL => $reccoURL."audio-features?ids=".implode(",", $chunk), 
             CURLOPT_HTTPHEADER => [
                 'Accept: application/json'
             ],
@@ -127,32 +126,7 @@ function analyzeTracks($spotifyIds) {
             array_push($tracksFeatures, $trackFeatures);
         }
         
-        // foreach ($data['content'] as $track) {
-        //     $songId = $track['id'];
-        //     $reccoIds[$songId] = $track;
-        // }
     }
     return $tracksFeatures;
 }
 
-
-// function analyzeTracks($tracks) { // takes an array of track metadata like the one returned from spotifyIdsToReccoData and gets the audio analysis from each one 
-//     global $reccoURL; 
-//     $curl = curl_init(); 
-//     $tracksFeatures = [];
-//     foreach ($tracks as $track) {
-    
-//         $curl_options = [
-//             CURLOPT_URL => $reccoURL."track/".$track['id']."/audio-features",
-//             CURLOPT_HTTPHEADER => [
-//                 'Accept: application/json'
-//             ],
-//             CURLOPT_RETURNTRANSFER => TRUE,
-            
-//         ];
-//         $data = runCurlRequest($curl, $curl_options);
-
-//         array_push($tracksFeatures, $data);
-//     }
-//     return $tracksFeatures;
-// }

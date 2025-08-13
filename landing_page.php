@@ -15,14 +15,14 @@
     <body>
         <div class="signUpContainer">
             <div class="title" style="margin:6px 0px"><h1>Sprintify</h1></div>
-            <form id="heightWeight" action="login.php" method="POST" class="heightWeightContainer">
+            <form id="heightWeight" action="http://localhost:8888/process/login.php" method="POST" class="heightWeightContainer">
                 <div class="heightWeight"><p>height: <input type="text" id="height" name="height" class="text formContainer"/> inches</p></div>
                 <div class="heightWeight"><p>weight: <input type="text" id="runDistance" name="weight" class="text formContainer"/> lbs </p></div>    
                 <!-- these are currently not sent anywhere      -->
                 
             </form>
                 <button form="heightWeight" type="submit" class="signUpButton text" style="margin: 0px;">sign up with spotify</button> 
-            <div class="signupToLogin">have an account? <a href="user_login.php" style="color: #CE87D9">login</a></div>
+            <div class="signupToLogin">have an account? <a href="user_http://localhost:8888/process/login.php" style="color: #CE87D9">login</a></div>
         </div>
     </body>
 </html>
