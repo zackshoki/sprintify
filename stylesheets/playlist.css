@@ -71,9 +71,6 @@ img {
     overflow: auto;
 }
 
-.songNameAndArtist > h2, .songNameAndArtist > p {
-
-}
 .songImage {
     height: 100%;
     aspect-ratio: 1/1;

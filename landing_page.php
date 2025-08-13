@@ -16,9 +16,8 @@
         <div class="signUpContainer">
             <div class="title" style="margin:6px 0px"><h1>Sprintify</h1></div>
             <form id="heightWeight" action="http://localhost:8888/process/login.php" method="POST" class="heightWeightContainer">
-                <div class="heightWeight"><p>height: <input type="text" id="height" name="height" class="text formContainer"/> inches</p></div>
-                <div class="heightWeight"><p>weight: <input type="text" id="runDistance" name="weight" class="text formContainer"/> lbs </p></div>    
-                <!-- these are currently not sent anywhere      -->
+                <div class="heightWeight"><p>height: <input type="text" id="height" name="height" class="text formContainer" required /> inches</p></div>
+                <div class="heightWeight"><p>weight: <input type="text" id="runDistance" name="weight" class="text formContainer" required /> lbs </p></div>    
                 
             </form>
                 <button form="heightWeight" type="submit" class="signUpButton text" style="margin: 0px;">sign up with spotify</button> 
