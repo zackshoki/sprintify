@@ -23,7 +23,7 @@ function echoHeader($title) {
         <div class="title"> 
             <h1 style="width: max-content">'.$title.'</h1>
         </div>
-        <a href="profile.php" style="max-height: 100%;display: flex;flex-direction: row-reverse;"><div id="avatar" class="avatar"></div></a>
+        <a href="http://[::1]:8888/pages/profile.php" style="max-height: 100%;display: flex;flex-direction: row-reverse;"><div id="avatar" class="avatar"></div></a>
         <!-- <div id="displayName"></div>
         <div id="email"></div>
         <div id="url" style="display:none"></div> -->
