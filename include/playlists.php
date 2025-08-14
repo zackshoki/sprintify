@@ -1,6 +1,7 @@
 <?php
 
 function createPlaylist($name, $description, $userId) {
+    $id = json_decode(getUser($userId)['profile'], true)['id'];
     $token = tokenSetup();
     $postData = [
         "name" => $name,
@@ -8,7 +9,7 @@ function createPlaylist($name, $description, $userId) {
         "public" => false
     ];
 
-    $playlist = makeSpotifyPostRequest($token, "users/317xhhb2qgw32elx7ebxeltoadb4/playlists", $postData);
+    $playlist = makeSpotifyPostRequest($token, "users/$id/playlists", $postData);
     sendPlaylistIdToDB($playlist['id'], $userId);
     return $playlist['id'];
 }
@@ -49,7 +50,14 @@ function clearPlaylist($playlistId) {
     $url = "playlists/$playlistId/tracks";
 
     $data = makeSpotifyPostRequest($token, $url, $postData, true);
-    
+    // update description and name 
+    $url = 'playlists/'.$playlistId;
+    $postData = [
+        'name' => "loading...", 
+        'description' => "updating..."
+    ];
+    unset($postData['uris']);
+    makeSpotifyPostRequest($token, $url, $postData, true);
     return $data;
 }
 

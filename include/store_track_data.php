@@ -1,9 +1,12 @@
 <?php
 
-function saveTracksToDB($userId) { //figure out how to mmake this happen in the background
-    $savedTracksFromSpotify = array_slice(getAllSavedTracks($userId), random_int(0, 600), 10);
+function getSavedTracksFromSpotify($userId) {
+    $savedTracksFromSpotify = getAllSavedTracks($userId);
+    return $savedTracksFromSpotify;
+}
+function saveTracksToDB($userId, $savedTracksFromSpotify) { //figure out how to mmake this happen in the background
     $reccoTrackData = spotifyIdsToReccoData($savedTracksFromSpotify);
-    $analyzedTracks = analyzeTracks($reccoTrackData);
+    $analyzedTracks = analyzeTracks($savedTracksFromSpotify);
     $mergedTrackData = mergeSongDataFromRecco($reccoTrackData, $analyzedTracks);
     storeTrackData($mergedTrackData, $userId);
 }

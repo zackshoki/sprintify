@@ -3,7 +3,7 @@
 $redirect_uri = 'http://[::1]:8888/index.php';
 
 function requestUserAuthorization()
-{ // for user authorization
+{
     global $redirect_uri;
     $client_id = getClientId();
     $scopes = 'ugc-image-upload%20user-modify-playback-state%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-private%20playlist-modify-public%20user-top-read%20user-read-recently-played%20user-library-modify%20user-library-read%20user-read-email%20user-read-private';
@@ -41,10 +41,10 @@ function requestAccessToken($code, $givenState)
         if (!isset($formatted_data['error'])) {
             $token = $formatted_data['access_token'];
             $refresh_token = $formatted_data['refresh_token'];
-            setcookie("spotify_token", $token, time() + $formatted_data['expires_in'], "/", "", true, true); // update the false to true once we have https instead of http
+            setcookie("spotify_token", $token, time() + $formatted_data['expires_in'], "/", "", true, true); 
             return $token;
         } else {
-            header("Location: login.php");
+            header("Location: http://localhost:8888/process/login.php");
         }
     }
 }
@@ -79,16 +79,6 @@ function requestRefreshToken($refresh_token)
         setcookie("spotify_token", $token, time() + $formatted_data['expires_in'], "/", "", true, true);
         return $token;
     } else {
-        header("Location: login.php");
+        header("Location: http://localhost:8888/process/login.php");
     }
-}
-function storeRefreshToken()
-{
-    global $refresh_token;
-    $refresh_token; // eventually query the db to store it
-}
-function getRefreshToken()
-{
-    global $refresh_token;
-    $refresh_token; // eventually query the db to get it 
 }

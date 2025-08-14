@@ -1,0 +1,83 @@
+h2 {
+    margin-block: 0px;
+    margin-inline: 0px;
+}
+img {
+    border-radius: 6px;
+}
+.playlistContainer {
+    display: grid;
+    grid-template-areas: 
+        "playlistCover title"
+        "playlistCover description";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 17px 12px;
+    gap: 17px;
+}
+.playlistImage {
+    grid-area: playlistCover;
+     box-shadow: 0px 0px 5px 0px #390044;
+}
+.playlistName {
+    grid-area: title;
+    background-color: #353135;
+    display: flex;
+    border-radius: 12px;
+    padding: 5px;
+}
+.playlistDescription {
+    grid-area: description;
+    background-color: #353135;
+    border-radius: 12px;
+    padding: 5px;
+}
+.playlistName > p {
+    align-self: flex-end;
+    margin-left: 4px;
+    margin-top: 4px;
+}
+.playlistDescription > p {
+    margin-left: 4px;
+    margin-top: 4px;
+}
+.songsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin: 17px 12px;
+    background-color: #353135;
+    padding: 8px;
+    box-shadow: 0px 0px 5px 0px #070208;
+    border-radius: 12px;
+}
+.songBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+    background-color: #544C55;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px #3900443e;
+}
+.songNameAndArtist {
+    flex-grow: 3;
+    margin: 8px 8px;
+    padding: 0px 3px;
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    overflow-wrap: break-word;
+    overflow: auto;
+}
+
+.songImage {
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
+.songImage > img {
+    max-width: 90%;
+    height: auto;
+    margin: 4px;
+}
