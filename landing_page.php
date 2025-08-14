@@ -1,3 +1,7 @@
+<?php 
+$_SESSION = [];
+setcookie("spotify_token", "", time()-3600);
+?>
 <html> 
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width">
@@ -21,7 +25,7 @@
                 
             </form>
                 <button form="heightWeight" type="submit" class="signUpButton text" style="margin: 0px;">sign up with spotify</button> 
-            <div class="signupToLogin">have an account? <a href="user_http://localhost:8888/process/login.php" style="color: #CE87D9">login</a></div>
+            <div class="signupToLogin">have an account? <a href="http://localhost:8888/user_login.php" style="color: #CE87D9">login</a></div>
         </div>
     </body>
 </html>
