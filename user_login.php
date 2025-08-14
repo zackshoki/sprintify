@@ -18,7 +18,7 @@
         <div class="signUpContainer">
             <div class="title"  style="margin:6px 0px"><h1>Sprintify</h1></div>
             <button onclick="login()" class="signUpButton" style="margin: 0px;padding:17px;"><p>log in with spotify</p></button>
-            <div class="signupToLogin"><p>first time? <a href="landing_page.php" style="color: #CE87D9;">sign up</a></p></div>
+            <div class="signupToLogin"><p>first time? <a href="http://localhost:8888/landing_page.php" style="color: #CE87D9;">sign up</a></p></div>
         </div>
     </body>
 </html>

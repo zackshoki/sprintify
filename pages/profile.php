@@ -27,13 +27,13 @@
 
 <body>
     <div class="header" style="justify-content: flex-start; gap: 15px">
-        <a href="profile.php"><div id="avatar" class="avatar"></div></a>
+        <a href="http://[::1]:8888/pages/profile.php"><div id="avatar" class="avatar"></div></a>
         <div class="title"> 
             <h1 id="displayName"></h1>
         </div>
     </div>
     <div class="homeContainer"> 
-        <form id="userData" action="profile.php" method="POST" class="runFormContainer">
+        <form id="userData" action="http://[::1]:8888/pages/profile.php" method="POST" class="runFormContainer">
             <button type="submit"><p>personal info</p></button>
             <div>
                 <p>height <input type="text" id="runDistance" name="height" value="<?php echo getUserHeight($userId); ?>"/> inches</p> <br>
